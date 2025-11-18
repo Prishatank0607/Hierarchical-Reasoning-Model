@@ -73,6 +73,7 @@ Hierarchical-Reasoning-Model/
 ├── updated_training_loop.py # Alternative recursive training script
 └── requirements.txt         # Dependencies
 
+
 ## Key Modules
 ### Core Architecture (hrm_core.py)
 HierarchicalReasoningModel
