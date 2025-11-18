@@ -64,6 +64,7 @@ python quick_start_guide.py
 
 
 ## Project Structure
+
 Hierarchical-Reasoning-Model/
 ├── hrm_core.py              # Core HRM architecture
 ├── hrm_training.py          # Training pipeline with curriculum learning
@@ -92,9 +93,9 @@ Metric comparison with baseline transformers
 
 ## Experiment Configurations
 The repository provides three predefined experiment settings:
-Tiny (16M parameters): Fast validation
-Small (36M parameters): Balanced accuracy and efficiency
-Medium (64M parameters): Highest accuracy
+- Tiny (16M parameters): Fast validation
+- Small (36M parameters): Balanced accuracy and efficiency
+- Medium (64M parameters): Highest accuracy
 
 ## Research Insights
 
