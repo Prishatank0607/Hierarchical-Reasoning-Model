@@ -62,9 +62,9 @@ python quick_start_guide.py
 # Select experiment size in interactive mode
 ```
 
-
 ## Project Structure
 
+```bash
 Hierarchical-Reasoning-Model/
 ├── hrm_core.py              # Core HRM architecture
 ├── hrm_training.py          # Training pipeline with curriculum learning
@@ -73,7 +73,7 @@ Hierarchical-Reasoning-Model/
 ├── quick_start_guide.py     # Experiment runner
 ├── updated_training_loop.py # Alternative recursive training script
 └── requirements.txt         # Dependencies
-
+```
 
 ## Key Modules
 ### Core Architecture (hrm_core.py)
