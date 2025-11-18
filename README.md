@@ -41,6 +41,31 @@ The Hierarchical Reasoning Model (HRM) introduces a new approach to transformer-
 | Small (36M params) | 85.34% | 67.26% | +18.08% |
 | Medium (64M params) | 94.17% | 70.37% | +23.80% |
 
+## Dataset Used
+
+### Primary Dataset: **HumanEval**
+- **Source**: OpenAI HumanEval Benchmark
+- **Description**: 164 hand-written programming problems with function signatures, docstrings, and test cases
+- **Purpose**: Evaluate functional correctness of code generation models
+- **Tasks**: Python programming problems ranging from simple algorithms to complex logic
+- **Metrics**: Pass@k accuracy via code execution and test verification
+
+### Supplementary Dataset: **Synthetic Coding Tasks**
+- **Generation**: Programmatically created coding problems
+- **Volume**: Scalable to thousands of samples
+- **Task Types**:
+  - Arithmetic operations (addition, subtraction)
+  - String manipulation (reversal, transformation)
+  - List operations (max, min, sorting)
+  - Conditional logic (even/odd, comparisons)
+- **Purpose**: Data augmentation and curriculum learning
+
+### Data Handling Features
+- **Automatic Fallback**: Seamless transition to synthetic data if primary dataset unavailable
+- **Curriculum Learning**: Progressive difficulty from simple to complex problems
+- **Token Optimization**: Efficient context window usage with special tokens
+- **Test Integration**: Built-in code execution and validation framework
+
 ## How to Use
 
 ### Clone Repository
@@ -108,3 +133,6 @@ Transparent hierarchical reasoning cycles
 Hierarchical convergence for stable deep reasoning
 Approximate gradient propagation enabling recursion
 Adaptive computation time for optimal resource usage
+
+## Contributing
+Contributions are welcome! Feel free to open issues or pull requests for improvements, new features, or bug fixes.
