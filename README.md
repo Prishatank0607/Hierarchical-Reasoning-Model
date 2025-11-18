@@ -2,127 +2,107 @@
 
 A novel transformer architecture that outperforms standard transformers on complex reasoning tasks through explicit hierarchical planning and execution.
 
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
 ## Overview
 
-The **Hierarchical Reasoning Model (HRM)** is a groundbreaking transformer architecture that introduces explicit hierarchical reasoning through planner-executor modules and iterative reasoning cycles. This project demonstrates how HRM significantly outperforms parameter-matched baseline transformers on complex code generation and reasoning tasks.
-
+The Hierarchical Reasoning Model (HRM) introduces a new approach to transformer-based reasoning by incorporating explicit hierarchical planning, multi-step reasoning cycles, and adaptive halting. Unlike standard transformers that make predictions in a single pass, HRM uses planner–executor modules to break down complex tasks and achieve significantly improved accuracy on reasoning and code-generation benchmarks.
 
 ## Features
 
 ### Architectural Innovations
-- **Planner-Executor Architecture**: H-module (planner) for high-level strategy, L-module (executor) for detailed implementation
-- **Iterative Reasoning Cycles**: Multi-step internal reasoning before final prediction
-- **Adaptive Computation Time**: Dynamic reasoning depth based on task complexity
-- **Q-Learning Halting**: Reinforcement learning for optimal stopping decisions
-- **Memory Optimization**: Gradient checkpointing and mixed precision training
+- Planner–Executor Architecture  
+  - H-module (Planner) for high-level strategy  
+  - L-module (Executor) for detailed execution  
+- Multi-cycle iterative reasoning  
+- Adaptive Computation Time (ACT)  
+- Q-learning-based halting mechanism  
+- Memory-efficient training with gradient checkpointing and mixed precision
 
 ### Technical Capabilities
-- **Parameter-matched comparisons** with baseline transformers
-- **Comprehensive evaluation** on HumanEval and synthetic coding tasks
-- **Progressive training** with curriculum learning and deep supervision
-- **Production-ready** with FastAPI integration potential
+- Parameter-matched comparison with baseline transformers  
+- Evaluation on HumanEval and synthetic coding tasks  
+- Curriculum learning and deep supervision  
+- Compatible with FastAPI integration for production deployment
 
-## Architecture
+## HRM vs Baseline Transformer
 
-### HRM Core Components
-Input → H-Module (Planner) → L-Module (Executor) → Output
-↑ ↓
-Feedback Loops Multiple Cycles
-
-
-**Key Differences from Standard Transformers:**
 | Aspect | HRM | Baseline Transformer |
-|--------|-----|---------------------|
-| **Reasoning** | Multi-step hierarchical | Single-pass flat |
-| **Planning** | Explicit H-cycles | Implicit via attention |
-| **Execution** | Multiple L-cycles | Single forward pass |
-| **Halting** | Learned via Q-learning | Fixed depth |
-| **Efficiency** | Adaptive computation | Static compute |
+|--------|-----|----------------------|
+| Reasoning | Multi-step hierarchical | Single-pass |
+| Planning | Explicit planning cycles | Implicit attention |
+| Execution | Recurrent L-cycles | One forward pass |
+| Halting | Q-learning guided | Fixed depth |
+| Efficiency | Adaptive compute | Static compute |
 
 ## Performance Results
 
 | Experiment | HRM Accuracy | Baseline Accuracy | Improvement |
 |------------|--------------|-------------------|-------------|
 | Tiny (16M params) | 44.58% | 43.72% | +0.86% |
-| Small (36M params) | 85.34% | 67.26% | +18.08%|
+| Small (36M params) | 85.34% | 67.26% | +18.08% |
 | Medium (64M params) | 94.17% | 70.37% | +23.80% |
 
-## How to use
+## How to Use
 
+### Clone Repository
 ```bash
-# Clone repository
 git clone https://github.com/Prishatank0607/Hierarchical-Reasoning-Model.git
 cd Hierarchical-Reasoning-Model
-
-# Install dependencies
+```
+### Install Dependencies
+```
 pip install -r requirements.txt
-
-# Verify installation
+```
+### Run Quick Test
+```
 python quick_start_guide.py
-Quick Start
-
-1. Run Quick Test
-
-bash
+```
+### Run Experiments (Tiny, Small, Medium)
+```
 python quick_start_guide.py
-
-2. Run Experiments
-
-python
-# Choose from TINY, SMALL, or MEDIUM experiments
-python quick_start_guide.py
-# Follow the interactive prompts to select experiment size
+# Select experiment size in interactive mode
 ```
 
-## Project Structure
 
+## Project Structure
 Hierarchical-Reasoning-Model/
 ├── hrm_core.py              # Core HRM architecture
-├── hrm_training.py          # Advanced training pipeline
-├── coding_dataset.py        # Data loading & preprocessing
-├── evaluate_coding.py       # Comprehensive evaluation
-├── quick_start_guide.py     # Main experiment runner
-├── updated_training_loop.py # Alternative training script
+├── hrm_training.py          # Training pipeline with curriculum learning
+├── coding_dataset.py        # Dataset loading and preprocessing
+├── evaluate_coding.py       # Evaluation suite (HumanEval and synthetic tasks)
+├── quick_start_guide.py     # Experiment runner
+├── updated_training_loop.py # Alternative recursive training script
 └── requirements.txt         # Dependencies
 
 ## Key Modules
-
 ### Core Architecture (hrm_core.py)
-HierarchicalReasoningModel: Main HRM class
-ReasoningModule: Planner and executor modules
-Advanced components: Rotary embeddings, SwiGLU, RMSNorm
+HierarchicalReasoningModel
+Planner and executor modules
+Rotary embeddings, SwiGLU activation, RMSNorm normalization
 
 ### Training Pipeline (hrm_training.py)
-HRMTrainer: Advanced training with curriculum learning
-Q-learning integration for adaptive halting
-Deep supervision and gradient optimization
+HRMTrainer
+Q-learning halting mechanism
+Curriculum learning and deep supervision
 
 ### Evaluation Suite (evaluate_coding.py)
-HumanEval benchmark integration
-Code execution and testing
-Comprehensive comparison metrics
+HumanEval integration
+Execution-based correctness evaluation
+Metric comparison with baseline transformers
 
 ## Experiment Configurations
-
-The project includes three pre-configured experiment sizes:
-
-TINY (16M params): Quick validation
-SMALL (36M params): Balanced performance
-MEDIUM (64M params): Maximum accuracy
+The repository provides three predefined experiment settings:
+Tiny (16M parameters): Fast validation
+Small (36M parameters): Balanced accuracy and efficiency
+Medium (64M parameters): Highest accuracy
 
 ## Research Insights
 
 ### Proven Advantages
-Architectural Efficiency: HRM achieves better performance with similar parameters
-Scalable Reasoning: Performance gap widens with task complexity
-Interpretable Reasoning: Transparent planning and execution cycles
+Better performance with similar parameter count
+Performance improvements increase with task complexity
+Transparent hierarchical reasoning cycles
 
 ### Technical Innovations
-Hierarchical Convergence: Prevents reasoning stalls
-Approximate Gradient Method: Enables deep recursion
-Adaptive Computational Time: Dynamic resource allocation
-
+Hierarchical convergence for stable deep reasoning
+Approximate gradient propagation enabling recursion
+Adaptive computation time for optimal resource usage
